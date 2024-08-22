@@ -51,7 +51,9 @@ public class Solution {
                 }
             }
 
-            if (result instanceof A) {
+//   result instanceof A        последующее приведение к C может вызвать ClassCastException, если result не является экземпляром C.
+
+            if (result instanceof C) {
                 C p = (C) result;
                 System.out.println(p.getClass().getSimpleName());
             }

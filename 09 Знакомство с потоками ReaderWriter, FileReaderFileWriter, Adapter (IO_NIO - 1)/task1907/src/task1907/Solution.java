@@ -1,9 +1,7 @@
 package task1907;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
+import java.util.Arrays;
 
 /* 
 Считаем слово
@@ -21,6 +19,24 @@ Requirements:
 5. Программа должна выводить в консоль количество слов "world", которые встречаются в файле.*/
 
 public class Solution {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        String file = br.readLine();
+        br.close();
+
+        try (BufferedReader fileRead = new BufferedReader(new FileReader(file))){
+            int count = 0;
+            while (fileRead.ready()){
+                String [] words = fileRead.readLine().split("\\W+");
+                System.out.println(Arrays.toString(words));
+                for(String s: words){
+                    if (s.equals("world")){
+                        count++;
+                    }
+                }
+            }
+
+            System.out.println(count);
+        }
     }
 }

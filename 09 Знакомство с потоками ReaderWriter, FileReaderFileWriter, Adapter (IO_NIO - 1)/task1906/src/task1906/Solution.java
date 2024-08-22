@@ -2,6 +2,7 @@ package task1906;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.List;
 
 /* 
 Четные символы
@@ -24,6 +25,26 @@ Requirements:
 6. Поток записи в файл (FileWriter) должен быть закрыт.*/
 
 public class Solution {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        String file1 = br.readLine();
+        String file2 = br.readLine();
+        System.out.println("Done");
+        br.close();
+
+        try (FileReader fr = new FileReader(file1); FileWriter fw = new FileWriter(file2)) {
+            int character;
+            int position = 1;
+
+            while ((character=fr.read()) != -1){
+                if (position % 2 == 0){
+                    fw.write(character);
+                }
+                position++;
+            }
+
+        }
+
+
     }
 }
