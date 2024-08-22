@@ -23,6 +23,21 @@ Requirements:
 public class Solution {
     public static void main(String[] args) throws DownloadException {
 
+            try (BufferedReader br = new BufferedReader(new InputStreamReader(System.in)); ){
+                while (true){
+                    try (FileInputStream fis = new FileInputStream(br.readLine())) {
+                        int fileSize = fis.available();
+                        System.out.println(fileSize);
+                        if (fileSize < 120){
+                            throw new DownloadException();
+                        }
+                    }
+                }
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+
+
     }
 
     public static class DownloadException extends Exception {
