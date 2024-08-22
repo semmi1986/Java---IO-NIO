@@ -1,9 +1,6 @@
 package task1822;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 
 /* 
 Поиск данных внутри файла
@@ -37,6 +34,18 @@ Requirements:
 4. Поток для чтения из файла должен быть закрыт.*/
 
 public class Solution {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
+
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+             BufferedReader fread = new BufferedReader(new FileReader(br.readLine()))) {
+            while (fread.ready()){
+                String str = fread.readLine();
+                if (str.startsWith(args[0])){
+                    System.out.println(str);
+                }
+            }
+        }
+
+
     }
 }

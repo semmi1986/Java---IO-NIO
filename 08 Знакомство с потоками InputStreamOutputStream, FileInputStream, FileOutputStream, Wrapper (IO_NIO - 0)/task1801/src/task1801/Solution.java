@@ -2,7 +2,9 @@ package task1801;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Scanner;
 
 /* 
 Максимальный байт
@@ -19,5 +21,22 @@ Requirements:
 
 public class Solution {
     public static void main(String[] args) throws Exception {
+        Scanner scanner = new Scanner(System.in);
+        String fileName = scanner.nextLine();
+        int max = 0;
+        try (FileInputStream inputStream = new FileInputStream(fileName);){
+            int countByte;
+            while ((countByte = inputStream.read()) != -1){
+                if (countByte> max){
+                    max = countByte;
+                }
+            }
+            System.out.println(max);
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+
+
+
     }
 }

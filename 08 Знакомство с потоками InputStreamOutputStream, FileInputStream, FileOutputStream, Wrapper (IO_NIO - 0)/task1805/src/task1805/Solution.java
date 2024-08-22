@@ -1,10 +1,7 @@
 package task1805;
 
-import java.io.BufferedReader;
 import java.io.FileInputStream;
-import java.io.InputStreamReader;
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.*;
 
 /* 
 Сортировка байт
@@ -30,5 +27,30 @@ Requirements:
 
 public class Solution {
     public static void main(String[] args) throws Exception {
+        Scanner scanner = new Scanner(System.in);
+        String fileName = scanner.nextLine();
+
+        try (FileInputStream fis = new FileInputStream(fileName)) {
+            Set<Integer> intSet = new TreeSet<>();
+            List<Integer> list = new ArrayList<>();
+
+            int res;
+
+            while ((res = fis.read()) != -1){
+                intSet.add(res);
+                list.add(res);
+            }
+            System.out.println("It`s a TreeSet");
+            for (Integer i: intSet){
+
+                System.out.print(i + " ");
+            }
+            System.out.println();
+            System.out.println("It`s a ArrayList");
+            for (Integer i: list){
+                System.out.print(i + " ");
+            }
+        }
+
     }
 }
